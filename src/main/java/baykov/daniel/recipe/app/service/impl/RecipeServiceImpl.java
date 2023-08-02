@@ -51,9 +51,9 @@ public class RecipeServiceImpl implements RecipeService {
     public RecipeDto updateRecipeById(RecipeDto recipeDto, Long recipeId) {
         Recipe recipe = recipeRepository.findById(recipeId)
                 .orElseThrow(() -> new ResourceNotFoundException("Recipe", "id", recipeId));
-        recipe.setIngredients(recipeDto.ingredients());
+        recipe.setName(recipeDto.name());
         recipe.setDescription(recipeDto.description());
-        recipe.setRating(recipeDto.rating());
+        recipe.setInstructions(recipeDto.instructions());
         return RecipeMapper.INSTANCE.entityToDTO(recipeRepository.save(recipe));
     }
 
