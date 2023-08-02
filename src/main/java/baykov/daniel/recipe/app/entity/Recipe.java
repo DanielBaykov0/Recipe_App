@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,11 +19,11 @@ public class Recipe {
     private Long id;
 
     @Column(nullable = false)
-    private List<String> ingredients;
+    private String name;
 
     @Column(nullable = false)
     private String description;
 
     @Column(nullable = false)
-    private int rating;
+    private String instructions;
 }
