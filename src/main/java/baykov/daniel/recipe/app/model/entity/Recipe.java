@@ -15,13 +15,6 @@ import lombok.Setter;
 @Table(name = "recipe")
 public class Recipe extends BaseEntity {
 
-    public Recipe(Long id, String name, String description, String instructions) {
-        super(id);
-        this.name = name;
-        this.description = description;
-        this.instructions = instructions;
-    }
-
     //    @Column(nullable = false)
     private String name;
 
