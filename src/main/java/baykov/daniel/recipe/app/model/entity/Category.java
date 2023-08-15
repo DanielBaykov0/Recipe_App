@@ -1,5 +1,6 @@
 package baykov.daniel.recipe.app.model.entity;
 
+import baykov.daniel.recipe.app.model.constant.CategoryEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -19,5 +20,5 @@ public class Category extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
 //    @Column(nullable = false)
-    private String name;
+    private CategoryEnum name;
 }
