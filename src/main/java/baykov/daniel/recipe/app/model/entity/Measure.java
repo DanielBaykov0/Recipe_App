@@ -1,7 +1,7 @@
 package baykov.daniel.recipe.app.model.entity;
 
-import baykov.daniel.recipe.app.model.constant.MeasureEnum;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,6 @@ import lombok.Setter;
 @Table(name = "measures")
 public class Measure extends BaseEntity {
 
-    @Enumerated(EnumType.STRING)
 //    @Column(nullable = false)
-    private MeasureEnum name;
+    private String name;
 }
