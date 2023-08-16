@@ -35,7 +35,7 @@ public class IngredientServiceImpl implements IngredientService {
                 .map(ingredient -> {
                     IngredientViewModel ingredientViewModel = new IngredientViewModel();
                     modelMapper.map(ingredient, ingredientViewModel);
-                    ingredient.setName(ingredient.getName());
+                    ingredientViewModel.setName(ingredient.getName());
                     return ingredientViewModel;
                 })
                 .orElseThrow(() -> new ResourceNotFoundException(id));
