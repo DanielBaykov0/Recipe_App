@@ -1,4 +1,4 @@
-package baykov.daniel.recipe.app.model.model.viewmodel;
+package baykov.daniel.recipe.app.web.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

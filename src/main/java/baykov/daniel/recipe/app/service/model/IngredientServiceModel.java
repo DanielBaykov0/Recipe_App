@@ -1,4 +1,4 @@
-package baykov.daniel.recipe.app.model.model.bindingmodel;
+package baykov.daniel.recipe.app.service.model;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class IngredientBindingModel {
+public class IngredientServiceModel {
+
+    private Long id;
 
     @NotEmpty
     private String name;

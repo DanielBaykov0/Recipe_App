@@ -1,8 +1,8 @@
 package baykov.daniel.recipe.app.service;
 
-import baykov.daniel.recipe.app.model.model.bindingmodel.IngredientBindingModel;
-import baykov.daniel.recipe.app.model.model.servicemodel.IngredientServiceModel;
-import baykov.daniel.recipe.app.model.model.viewmodel.IngredientViewModel;
+import baykov.daniel.recipe.app.model.bindingmodel.IngredientBindingModel;
+import baykov.daniel.recipe.app.service.model.IngredientServiceModel;
+import baykov.daniel.recipe.app.web.model.IngredientViewModel;
 
 import java.util.List;
 

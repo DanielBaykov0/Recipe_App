@@ -1,9 +1,9 @@
 package baykov.daniel.recipe.app.service.impl;
 
 import baykov.daniel.recipe.app.model.entity.Ingredient;
-import baykov.daniel.recipe.app.model.model.bindingmodel.IngredientBindingModel;
-import baykov.daniel.recipe.app.model.model.servicemodel.IngredientServiceModel;
-import baykov.daniel.recipe.app.model.model.viewmodel.IngredientViewModel;
+import baykov.daniel.recipe.app.model.bindingmodel.IngredientBindingModel;
+import baykov.daniel.recipe.app.service.model.IngredientServiceModel;
+import baykov.daniel.recipe.app.web.model.IngredientViewModel;
 import baykov.daniel.recipe.app.repository.IngredientRepository;
 import baykov.daniel.recipe.app.service.IngredientService;
 import baykov.daniel.recipe.app.web.exception.ResourceNotFoundException;
