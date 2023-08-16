@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "recipe_step")
+@Table(name = "recipe_steps")
 public class Steps extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

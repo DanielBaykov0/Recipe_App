@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "measure")
+@Table(name = "measures")
 public class Measure extends BaseEntity {
 
     @Enumerated(EnumType.STRING)

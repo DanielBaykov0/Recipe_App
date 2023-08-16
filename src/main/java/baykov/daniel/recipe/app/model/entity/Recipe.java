@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "recipe")
+@Table(name = "recipes")
 public class Recipe extends BaseEntity {
 
     //    @Column(nullable = false)
