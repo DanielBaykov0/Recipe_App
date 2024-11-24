@@ -1,10 +1,9 @@
 package baykov.daniel.recipes.controller;
 
-import baykov.daniel.recipes.entity.Measure;
+import baykov.daniel.recipes.entity.Ingredient;
 import baykov.daniel.recipes.payload.GenericPageableResponse;
 import baykov.daniel.recipes.payload.response.ResponseMessage;
-import baykov.daniel.recipes.service.MeasureService;
-import io.swagger.v3.oas.annotations.Operation;
+import baykov.daniel.recipes.service.IngredientService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,27 +17,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1/measures")
+@RequestMapping("api/v1/ingredients")
 @RequiredArgsConstructor
-public class MeasureController {
+public class IngredientController {
 
-    private final MeasureService measureService;
+    private final IngredientService ingredientService;
 
-    @GetMapping("/{measureId}")
-    public ResponseEntity<Measure> getMeasureById(@PathVariable Long measureId) {
-        Measure measure = measureService.findMeasureById(measureId);
-        return ResponseEntity.ok(measure);
+    @GetMapping("/{ingredientId}")
+    public ResponseEntity<Ingredient> getIngredientById(@PathVariable Long ingredientId) {
+        Ingredient ingredient = ingredientService.findIngredientById(ingredientId);
+        return ResponseEntity.ok(ingredient);
     }
 
     @GetMapping
-    public ResponseEntity<GenericPageableResponse<Measure>> getAllMeasures(
+    public ResponseEntity<GenericPageableResponse<Ingredient>> getAllIngredients(
             @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize,
             @RequestParam(value = "sortBy", defaultValue = "id", required = false) String sortBy,
             @RequestParam(value = "sortDir", defaultValue = "asc", required = false) String sortDir) {
 
-        GenericPageableResponse<Measure> measuresResponse = measureService.findAllMeasuresPaged(pageNo, pageSize, sortBy, sortDir);
-        return ResponseEntity.ok(measuresResponse);
+        GenericPageableResponse<Ingredient> ingredientsResponse = ingredientService.findAllIngredientsPaged(pageNo, pageSize, sortBy, sortDir);
+        return ResponseEntity.ok(ingredientsResponse);
     }
 
 //    @PostMapping
@@ -51,18 +50,17 @@ public class MeasureController {
 //        return new ResponseEntity<>(createdAuthor, HttpStatus.CREATED);
 //    }
 
-    @Operation(hidden = true)
-    @PutMapping("/{measureId}")
-    public ResponseEntity<ResponseMessage> updateMeasureById(
-            @PathVariable Long measureId,
-            @Valid @RequestBody Measure measure) {
-        ResponseMessage responseMessage = measureService.updateMeasureById(measureId, measure);
-        return ResponseEntity.ok(responseMessage);
+    @PutMapping("/{ingredientId}")
+    public ResponseEntity<ResponseMessage> updateIngredientById(
+            @PathVariable Long ingredientId,
+            @Valid @RequestBody Ingredient ingredient) {
+        ResponseMessage response = ingredientService.updateIngredientById(ingredientId, ingredient);
+        return ResponseEntity.ok(response);
     }
 
-    @DeleteMapping("/{measureId}")
-    public ResponseEntity<String> deleteMeasureById(@PathVariable Long measureId) {
-        measureService.deleteMeasureById(measureId);
-        return ResponseEntity.ok("");
+    @DeleteMapping("/{ingredientId}")
+    public ResponseEntity<ResponseMessage> deleteIngredientById(@PathVariable Long ingredientId) {
+        ResponseMessage response = ingredientService.deleteIngredientById(ingredientId);
+        return ResponseEntity.ok(response);
     }
 }

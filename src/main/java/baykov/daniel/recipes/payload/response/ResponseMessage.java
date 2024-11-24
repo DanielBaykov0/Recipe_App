@@ -83,4 +83,27 @@ public class ResponseMessage {
     public void addGlobalError(StatusObjectError globalError) {
         this.globalErrors.add(globalError);
     }
+
+    public static ResponseMessage success() {
+        return ResponseMessage.builder()
+                .status(STATUS_SUCCESS)
+                .messageCode(SUCCESS_CODE)
+                .httpStatusCode(HttpStatus.OK.value())
+                .build();
+    }
+
+    public static ResponseMessageBuilder error() {
+        return ResponseMessage.builder()
+                .status(STATUS_ERROR)
+                .messageCode(ERROR_CODE)
+                .httpStatusCode(HttpStatus.BAD_REQUEST.value());
+    }
+
+    public static ResponseMessageBuilder error(String messageCode, String message) {
+        return ResponseMessage.builder()
+                .status(STATUS_ERROR)
+                .messageCode(messageCode)
+                .message(message)
+                .httpStatusCode(HttpStatus.BAD_REQUEST.value());
+    }
 }

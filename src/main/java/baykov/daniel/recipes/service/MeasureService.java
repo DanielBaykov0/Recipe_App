@@ -6,6 +6,7 @@ import baykov.daniel.recipes.exception.ResourceNotFoundException;
 import baykov.daniel.recipes.payload.GenericPageableResponse;
 import baykov.daniel.recipes.payload.response.ResponseMessage;
 import baykov.daniel.recipes.repository.MeasureRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -33,12 +34,15 @@ public class MeasureService {
         return new GenericPageableResponse<>(measures, measures.stream().toList());
     }
 
-    public Measure addNewMeasure(String name) {
+    @Transactional
+    public ResponseMessage addNewMeasure(String name) {
         Measure measure = measureRepository.findByName(name)
                 .orElseThrow(() -> new EntityAlreadyExistsException(name));
-        return measureRepository.save(measure);
+        measureRepository.save(measure);
+        return ResponseMessage.success();
     }
 
+    @Transactional
     public ResponseMessage updateMeasureById(Long measureId, Measure measure) {
         Measure existingMeasure = measureRepository.findById(measureId)
                 .orElseThrow(() -> new ResourceNotFoundException(measureId));
@@ -49,12 +53,14 @@ public class MeasureService {
 
         existingMeasure.setName(measure.getName());
         measureRepository.save(existingMeasure);
-        return new ResponseMessage();
+        return ResponseMessage.success();
     }
 
-    public void deleteMeasureById(Long id) {
+    @Transactional
+    public ResponseMessage deleteMeasureById(Long id) {
         Measure measure = measureRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(id));
         measureRepository.deleteById(measure.getId());
+        return ResponseMessage.success();
     }
 }
